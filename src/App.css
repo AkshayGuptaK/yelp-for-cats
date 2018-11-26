@@ -1,0 +1,5 @@
+.searchBtn {
+  background: url('../public/images/search.png') no-repeat local;
+  background-size: 100% 100%;
+  padding: 15px;
+}

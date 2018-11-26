@@ -1,0 +1,20 @@
+{
+  "name": "yelp-for-cats",
+  "version": "1.0.0",
+  "description": "A business search and review site using React and data from Yelp fusion API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AkshayGuptaK/yelp-for-cats.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AkshayGuptaK/yelp-for-cats/issues"
+  },
+  "homepage": "https://github.com/AkshayGuptaK/yelp-for-cats#readme"
+}

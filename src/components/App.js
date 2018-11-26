@@ -2,7 +2,8 @@ import React from 'react'
 import { hot } from 'react-hot-loader'
 
 import '../App.css'
-import InputForm from './InputForm'
+import SearchForm from './SearchForm'
+import fetchRequests from '../fetch'
 
 class App extends React.Component {
   constructor (props) {
@@ -10,12 +11,15 @@ class App extends React.Component {
     this.state = { data: [] }
   }
   componentDidMount () { // opening fetch req
-    return null
+    return null 
+  }
+  doSearch = (term, location) => {
+    fetchRequests.doSearch(term, location)
   }
   render () {
     return (
       <div>
-        <InputForm value=''></InputForm>
+        <SearchForm location='Berkeley' submit={this.doSearch}></SearchForm>
         <p>Hello</p>
       </div>
     )

@@ -11,7 +11,7 @@ class InputField extends React.Component {
           value={this.props.value}
           placeholder={this.props.placeholder}
           onChange={(e) => { this.props.update(e.target.value) }}>
-        '</input>
+        </input>
       </div>
     )
   }

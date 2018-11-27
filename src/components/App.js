@@ -6,21 +6,25 @@ import SearchForm from './SearchForm'
 import BusinessCard from './BusinessCard'
 import fetchRequests from '../fetch'
 
-function getResource (dir, value) {
-  return null // complete
+function getStarImage (rating) {
+  let file = parseInt(rating)
+  if (rating > file) {
+    file = `${file}-half`
+  }
+  return `images/stars/${file}.png`
 }
 
 class App extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { businesses: [] }
+    this.state = { businesses: [], total: 0, index: 1 }
   }
   componentDidMount () { // opening fetch req
     return null
   }
   doSearch = (term, location) => {
-    fetchRequests.doSearch(term, location).then(res => this.setState({ 'businesses': res }))
-    // console.log(this.state.businesses) // debug
+    fetchRequests.doSearch(term, location)
+    .then(res => this.setState({ 'businesses': res.businesses, 'total': res.total }))
   }
   render () {
     return (
@@ -36,7 +40,7 @@ class App extends React.Component {
             tags={business.tags}
             phone={business.phone}
             address={business.address}
-            rating={getResource('stars', business.rating)}
+            rating={getStarImage(business.rating)}
             reviews={business.reviews}
             >
           </BusinessCard>}

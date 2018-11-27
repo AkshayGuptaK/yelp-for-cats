@@ -3,7 +3,6 @@ const domain = 'https://api.yelp.com/v3'
 const key = 'NUvkMgNejyHF9AYnPRdtXaqMGkX2sbad1ZG1hKIEeRKv3IVrUzmosnNpLrtBUSopwGm6mP5_Qy1SPcMmVzG-o2cygfT4_gFqFBpf2pakOrqFqbSs4uR7gHGgrm37W3Yx'
 
 function formatYelpData (data) {
-  console.log('data is', data) // debug
   return data.businesses.map(business => {
     return {
       'id': business.id,
@@ -13,7 +12,7 @@ function formatYelpData (data) {
       'rating': business.rating,
       'price': business.price,
       'phone': business.display_phone,
-      'address': business.location.display_address
+      'address': business.location.display_address.join('\n')
     }
   })
 }
@@ -33,7 +32,7 @@ function fetchYelp (url) {
 class fetchRequests {
   static doSearch (term, location) {
     return fetchYelp(`businesses/search?term=${term}&location=${location}`)
-      .then(res => formatYelpData(res))
+      .then(res => { return { 'businesses': formatYelpData(res), 'total': res.total } })
   }
 }
 

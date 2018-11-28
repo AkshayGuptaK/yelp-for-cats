@@ -30,8 +30,8 @@ function fetchYelp (url) {
 }
 
 class fetchRequests {
-  static doSearch (term, location) {
-    return fetchYelp(`businesses/search?term=${term}&location=${location}`)
+  static doSearch (query) {
+    return fetchYelp(`businesses/search?${query}`)
       .then(res => { return { 'businesses': formatYelpData(res), 'total': res.total } })
   }
 }

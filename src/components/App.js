@@ -1,18 +1,11 @@
 import React from 'react'
 import { hot } from 'react-hot-loader'
+import { Route } from 'react-router-dom'
 
 import '../App.css'
-import SearchForm from './SearchForm'
-import BusinessCard from './BusinessCard'
-import fetchRequests from '../fetch'
-
-function getStarImage (rating) {
-  let file = parseInt(rating)
-  if (rating > file) {
-    file = `${file}-half`
-  }
-  return `images/stars/${file}.png`
-}
+import Landing from './Landing'
+import SearchPage from './SearchPage'
+import BusinessDetails from './BusinessDetails'
 
 class App extends React.Component {
   constructor (props) {
@@ -22,29 +15,12 @@ class App extends React.Component {
   componentDidMount () { // opening fetch req
     return null
   }
-  doSearch = (term, location) => {
-    fetchRequests.doSearch(term, location)
-    .then(res => this.setState({ 'businesses': res.businesses, 'total': res.total }))
-  }
   render () {
     return (
       <div>
-        <SearchForm location='Berkeley' submit={this.doSearch}></SearchForm>
-        {this.state.businesses.map(business => 
-          {return <BusinessCard
-            key={business.id}
-            id={business.id}
-            name={business.name}
-            image={business.image}
-            price={business.price}
-            tags={business.tags}
-            phone={business.phone}
-            address={business.address}
-            rating={getStarImage(business.rating)}
-            reviews={business.reviews}
-            >
-          </BusinessCard>}
-        )}
+        <Route exact path='/' component={Landing} />
+        <Route path='/search/:query' render={(props) => <SearchPage {...props} />} />
+        <Route path='/business/:id' component={BusinessDetails} />
       </div>
     )
   }

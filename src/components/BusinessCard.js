@@ -6,7 +6,7 @@ function getStarImage (rating) {
   if (rating > file) {
     file = `${file}-half`
   }
-  return `images/stars/${file}.png`
+  return `../images/stars/${file}.png`
 }
 
 class BusinessCard extends React.Component {

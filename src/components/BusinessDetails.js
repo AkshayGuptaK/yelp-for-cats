@@ -10,7 +10,6 @@ class BusinessDetails extends React.Component {
   componentDidMount () {
     fetchRequests.getDetails(this.props.match.params.id)
       .then(res => this.setState(res))
-      .then(res => console.log('tags', this.state.name, this.state.tags.map(tag => tag.title))) // debug
   }
   render () {
     return (

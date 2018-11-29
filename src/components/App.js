@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader'
 import { Route } from 'react-router-dom'
 
 import '../App.css'
+import NavHeader from './NavHeader'
 import Landing from './Landing'
 import SearchPage from './SearchPage'
 import BusinessDetails from './BusinessDetails'
@@ -18,6 +19,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
+        <NavHeader />
         <Route exact path='/' component={Landing} />
         <Route path='/search/:query' render={(props) => <SearchPage {...props} />} />
         <Route path='/business/:id' component={BusinessDetails} />

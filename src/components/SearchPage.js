@@ -1,16 +1,7 @@
 import React from 'react'
 
-import SearchForm from './SearchForm'
 import BusinessCard from './BusinessCard'
 import fetchRequests from '../fetch'
-
-function getStarImage (rating) {
-  let file = parseInt(rating)
-  if (rating > file) {
-    file = `${file}-half`
-  }
-  return `images/stars/${file}.png`
-}
 
 class SearchPage extends React.Component {
   constructor (props) {
@@ -23,24 +14,25 @@ class SearchPage extends React.Component {
   }
   render () {
     return (
-      <div>
-        <p>This is the search page</p>
-        <SearchForm location='Berkeley' />
-        {this.state.businesses.map(business => {
-          return <BusinessCard
-            key={business.id}
-            id={business.id}
-            name={business.name}
-            image={business.image}
-            price={business.price}
-            tags={business.tags}
-            phone={business.phone}
-            address={business.address}
-            rating={getStarImage(business.rating)}
-            reviews={business.reviews}
-          />
-        })}
-      </div>
+      this.state.businesses.length > 0 ? (
+        <div>
+          <p>This is the search page</p>
+          {this.state.businesses.map(business => {
+            return <BusinessCard
+              key={business.id}
+              id={business.id}
+              name={business.name}
+              image={business.image}
+              price={business.price}
+              tags={business.tags}
+              phone={business.phone}
+              address={business.address}
+              rating={business.rating}
+              reviews={business.reviews}
+            />
+          })}
+        </div>
+      ) : <div>Please wait...</div>
     )
   }
 }

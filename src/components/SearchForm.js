@@ -10,7 +10,7 @@ class SearchForm extends React.Component {
   }
   render () {
     return (
-      <div>
+      <div className='SearchBar'>
         <InputField
           class='InputKeyword'
           label='Search'

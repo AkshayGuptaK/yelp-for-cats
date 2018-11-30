@@ -12,15 +12,19 @@ function getStarImage (rating) {
 class BusinessCard extends React.Component {
   render () {
     return (
-      <div>
-        <img src={this.props.image} />
-        <Link to={`/business/${this.props.id}`}>{this.props.name}</Link>
-        <p>{this.props.price}</p>
-        <p>{this.props.tags.map(tag => tag.title).join(', ')}</p>
-        <p>{this.props.phone}</p>
-        <p>{this.props.address}</p>
-        <img src={getStarImage(this.props.rating)} />
-        <p>Based on {this.props.reviews} reviews</p>
+      <div className='card'>
+        <img className='pic' src={this.props.image} />
+        <div className='info'>
+          <Link className='name' to={`/business/${this.props.id}`}>{this.props.name}</Link>
+          <div className='rating'>
+            <img className='stars' src={getStarImage(this.props.rating)} />
+            <p>Based on {this.props.reviews} reviews</p>
+          </div>
+          <p>{this.props.price}</p>
+          <p>{this.props.tags.map(tag => tag.title).join(', ')}</p>
+          <p>{this.props.phone}</p>
+          <p>{this.props.address}</p>
+        </div>
       </div>
     )
   }

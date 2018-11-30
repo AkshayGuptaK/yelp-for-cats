@@ -1,18 +1,34 @@
 import React from 'react'
 
+
+function getStarImage (rating) {
+  let file = parseInt(rating)
+  if (rating > file) {
+    file = `${file}-half`
+  }
+  return `../images/stars/${file}.png`
+}
+
 class BusinessDetails extends React.Component {
   render () {
     return (
-      <div>
-        <h2>{this.props.data.name}</h2>
-        <p>{this.props.data.price}</p>
-        <p>{this.props.data.phone}</p>
-        <p>{this.props.data.address}</p>
-        <p>{this.props.data.tags.map(tag => tag.title).join(', ')}</p>
-        <img src={this.props.data.images[0]} />
-        <img src={this.props.data.images[1]} />
-        <img src={this.props.data.images[2]} />
-        <p>Based on {this.props.data.reviews} reviews</p>
+      <div className='details'>
+        <div className='imgs'>
+          <img className='pic' src={this.props.data.images[0]} />
+          <img className='pic' src={this.props.data.images[1]} />
+          <img className='pic' src={this.props.data.images[2]} />
+        </div>
+        <div className='info'>
+          <h1>{this.props.data.name}</h1>
+          <div className='rating'>
+            <img className='stars' src={getStarImage(this.props.data.rating)} />
+            <p>Based on {this.props.data.reviews} reviews</p>
+          </div>
+          <p>{this.props.data.price}</p>
+          <p>{this.props.data.tags.map(tag => tag.title).join(', ')}</p>
+          <p>{this.props.data.phone}</p>
+          <p>{this.props.data.address}</p>
+        </div>
       </div>
     )
   }

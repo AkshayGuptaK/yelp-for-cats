@@ -19,10 +19,8 @@ function withFetch (Component, requestFunc) {
       this.doFetch()
     }
     doFetch () {
-      console.log('hoc props', this.props.match.params) // debug
       requestFunc(this.props.match.params.query)
         .then(res => this.setState(res))
-        .then(res => console.log('state is', this.state)) // debug
     }
     render () {
       return (
@@ -40,7 +38,7 @@ class App extends React.Component {
     this.state = { location: 'Berkeley' }
   }
   render () {
-    return ( // redirect / path to /location=${this.state.location}
+    return (
       <div>
         <NavHeader location={this.state.location} />
         <Switch>

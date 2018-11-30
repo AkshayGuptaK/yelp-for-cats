@@ -11,6 +11,7 @@ function getStarImage (rating) {
 
 class BusinessDetails extends React.Component {
   render () {
+    // console.log('hours data', this.props.data.hours) // debug
     return (
       <div className='details'>
         <div className='imgs'>

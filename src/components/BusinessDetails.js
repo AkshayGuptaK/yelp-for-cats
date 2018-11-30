@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 function getStarImage (rating) {
   let file = parseInt(rating)
   if (rating > file) {
@@ -10,6 +9,11 @@ function getStarImage (rating) {
 }
 
 class BusinessDetails extends React.Component {
+  displayOpen = () => {
+    if (this.props.data.hours[0].is_open_now) {
+      return <p style={{color: 'green'}}>Open</p>
+    } return <p style={{color: 'red'}}>Closed</p>
+  }
   render () {
     // console.log('hours data', this.props.data.hours) // debug
     return (
@@ -25,6 +29,7 @@ class BusinessDetails extends React.Component {
             <img className='stars' src={getStarImage(this.props.data.rating)} />
             <p>Based on {this.props.data.reviews} reviews</p>
           </div>
+          {this.displayOpen()}
           <p>{this.props.data.price}</p>
           <p>{this.props.data.tags.map(tag => tag.title).join(', ')}</p>
           <p>{this.props.data.phone}</p>

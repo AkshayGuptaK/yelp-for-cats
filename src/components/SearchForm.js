@@ -12,13 +12,13 @@ class SearchForm extends React.Component {
     return (
       <div>
         <InputField
-          class=''
+          class='InputKeyword'
           label='Search'
           placeholder='Enter a keyword or search term'
           value={this.state.term}
           update={(text) => this.setState({ term: text })} />
         <InputField
-          class=''
+          class='InputLocation'
           label='Near'
           placeholder='Enter a location'
           value={this.state.location}

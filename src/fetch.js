@@ -50,7 +50,11 @@ class fetchRequests {
     return fetchYelp(`businesses/search?${query}`)
       .then(res => { return { 'businesses': formatSearchData(res), 'total': res.total } })
   }
-  static getDetails (id) {
+  static locDetails (loc) {
+    return fetchYelp(`businesses/search?location=${loc}`)
+      .then(res => { return { 'businesses': formatSearchData(res), 'total': res.total } })
+  }
+  static bizDetails (id) {
     return fetchYelp(`businesses/${id}`)
       .then(res => formatBusinessDetails(res))
   }

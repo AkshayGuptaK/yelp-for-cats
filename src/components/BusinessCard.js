@@ -16,7 +16,7 @@ class BusinessCard extends React.Component {
         <img src={this.props.image} />
         <Link to={`/business/${this.props.id}`}>{this.props.name}</Link>
         <p>{this.props.price}</p>
-        <p>{this.props.tags.map(tag => tag.name).join(' ')}</p>
+        <p>{this.props.tags.map(tag => tag.title).join(', ')}</p>
         <p>{this.props.phone}</p>
         <p>{this.props.address}</p>
         <img src={getStarImage(this.props.rating)} />

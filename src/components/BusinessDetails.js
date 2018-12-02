@@ -15,7 +15,6 @@ class BusinessDetails extends React.Component {
     } return <p style={{color: 'red'}}>Closed</p>
   }
   render () {
-    // console.log('hours data', this.props.data.hours) // debug
     return (
       <div className='details'>
         <div className='imgs'>

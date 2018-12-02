@@ -95,3 +95,8 @@
   font-size: 2rem;
   margin-bottom: 10px;
 }
+
+canvas {
+  display: block;
+  margin: auto;
+}

@@ -7,6 +7,7 @@ import NavHeader from './NavHeader'
 import Landing from './Landing'
 import SearchPage from './SearchPage'
 import BusinessDetails from './BusinessDetails'
+import Spinner from './Spinner'
 import fetchRequests from '../fetch'
 
 function withFetch (Component, requestFunc) {
@@ -26,7 +27,7 @@ function withFetch (Component, requestFunc) {
       return (
         Object.keys(this.state).length > 0 ? (
           <Component data={this.state} {...this.props} />
-        ) : <div>Please wait...</div>
+        ) : <Spinner size={300} color='#000000' />
       )
     }
   }

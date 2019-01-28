@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Card } from 'react-bulma-components/full'
 
 function getStarImage (rating) {
   let file = parseInt(rating)
@@ -9,25 +10,26 @@ function getStarImage (rating) {
   return `../images/stars/${file}.png`
 }
 
-class BusinessCard extends React.Component {
-  render () {
-    return (
-      <div className='card'>
-        <img className='pic' src={this.props.image} />
-        <div className='info'>
-          <Link className='name' to={`/business/${this.props.id}`}>{this.props.name}</Link>
-          <div className='rating'>
-            <img className='stars' src={getStarImage(this.props.rating)} />
-            <p>Based on {this.props.reviews} reviews</p>
-          </div>
-          <p>{this.props.price}</p>
-          <p>{this.props.tags.map(tag => tag.title).join(', ')}</p>
-          <p>{this.props.phone}</p>
-          <p>{this.props.address}</p>
+function BusinessCard (props) {
+  console.log('props are', props) // debug
+  return (
+    <Card style={{ marginBottom: 20 + 'px' }}>
+      <Card.Content style={{ width: 30 + '%', display: 'inline-block', padding: 0, verticalAlign: 'middle' }}>
+        <Card.Image size='1by1' src={props.image} />
+      </Card.Content>
+      <Card.Content style={{ width: 60 + '%', display: 'inline-block', verticalAlign: 'top' }}>
+        <Link style={{ fontSize: 1.5 + 'rem' }} to={`/business/${props.id}`}>{props.name}</Link>
+        <div className='rating'>
+          <img className='stars' src={getStarImage(props.rating)} />
+          <p>Based on {props.reviews} reviews</p>
         </div>
-      </div>
-    )
-  }
+        <p>{props.price}</p>
+        <p>{props.tags.map(tag => tag.title).join(', ')}</p>
+        <p>{props.phone}</p>
+        <p>{props.address}</p>
+      </Card.Content>
+    </Card>
+  )
 }
 
 export default BusinessCard

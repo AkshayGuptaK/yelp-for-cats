@@ -1,4 +1,5 @@
 import React from 'react'
+import { Container, Content, Image } from 'react-bulma-components/full'
 
 function getStarImage (rating) {
   let file = parseInt(rating)
@@ -16,13 +17,13 @@ class BusinessDetails extends React.Component {
   }
   render () {
     return (
-      <div className='details'>
-        <div className='imgs'>
-          <img className='pic' src={this.props.data.images[0]} />
-          <img className='pic' src={this.props.data.images[1]} />
-          <img className='pic' src={this.props.data.images[2]} />
-        </div>
-        <div className='info'>
+      <Container className='details'>
+        <Content style={{ width: 30 + '%', display: 'inline-block', padding: 0, verticalAlign: 'top' }}>
+          <Image size='1by1' src={this.props.data.images[0]} />
+          <Image size='1by1' src={this.props.data.images[1]} />
+          <Image size='1by1' src={this.props.data.images[2]} />
+        </Content>
+        <Content style={{ width: 60 + '%', display: 'inline-block', verticalAlign: 'top' }}>
           <h1>{this.props.data.name}</h1>
           <div className='rating'>
             <img className='stars' src={getStarImage(this.props.data.rating)} />
@@ -33,8 +34,8 @@ class BusinessDetails extends React.Component {
           <p>{this.props.data.tags.map(tag => tag.title).join(', ')}</p>
           <p>{this.props.data.phone}</p>
           <p>{this.props.data.address}</p>
-        </div>
-      </div>
+        </Content>
+      </Container>
     )
   }
 }

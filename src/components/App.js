@@ -1,6 +1,7 @@
 import React from 'react'
 import { hot } from 'react-hot-loader'
 import { Route, Redirect, Switch } from 'react-router-dom'
+import { Container, Footer } from 'react-bulma-components/full'
 
 import '../App.css'
 import NavHeader from './NavHeader'
@@ -40,7 +41,7 @@ class App extends React.Component {
   }
   render () {
     return (
-      <div>
+      <Container>
         <NavHeader location={this.state.location} />
         <Switch>
           <Route exact path='/location/:query' component={withFetch(Landing, fetchRequests.locDetails)} />
@@ -48,7 +49,13 @@ class App extends React.Component {
           <Route path='/business/:query' component={withFetch(BusinessDetails, fetchRequests.bizDetails)} />
           <Redirect to={`/location/${this.state.location}`} />
         </Switch>
-      </div>
+        <Footer>
+          <div id='credit'>
+            <h2>Powered by</h2>
+            <img id='yelp_logo' src='../images/yelp.png' />
+          </div>
+        </Footer>
+      </Container>
     )
   }
 }

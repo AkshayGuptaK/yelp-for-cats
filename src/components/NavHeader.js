@@ -8,10 +8,6 @@ class NavHeader extends React.Component {
       <div id='nav'>
         <img id='logo' src='../images/nyan.jpeg' />
         <SearchForm location={this.props.location} />
-        <div id='credit'>
-          <h2>Powered by</h2>
-          <img id='yelp_logo' src='../images/yelp.png' />
-        </div>
       </div>
     )
   }

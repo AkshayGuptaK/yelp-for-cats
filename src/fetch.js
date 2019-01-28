@@ -42,7 +42,7 @@ function fetchYelp (url) {
       'Authorization': 'Bearer ' + key
     }
   }).then(res => res.json())
-    .catch(e => console.log(e))
+    .catch(console.log)
 }
 
 class fetchRequests {
@@ -57,6 +57,10 @@ class fetchRequests {
   static bizDetails (id) {
     return fetchYelp(`businesses/${id}`)
       .then(res => formatBusinessDetails(res))
+  }
+  static bizReviews (id) {
+    return fetchYelp(`businesses/${id}/reviews`)
+      .then(res => res.reviews)
   }
 }
 

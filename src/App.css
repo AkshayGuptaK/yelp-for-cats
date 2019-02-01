@@ -81,6 +81,12 @@
   margin-bottom: 10px;
 }
 
+.imgContainer {
+  display: inline-block;
+  width: 30%;
+  margin: 1em;
+}
+
 canvas {
   display: block;
   margin: auto;

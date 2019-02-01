@@ -46,7 +46,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/location/:query' component={withFetch(Landing, fetchRequests.locDetails)} />
           <Route path='/search/:query' component={withFetch(SearchPage, fetchRequests.doSearch)} />
-          <Route path='/business/:query' component={withFetch(BusinessDetails, fetchRequests.bizDetails)} />
+          <Route path='/business/:query' component={withFetch(BusinessDetails, fetchRequests.bizInfo)} />
           <Redirect to={`/location/${this.state.location}`} />
         </Switch>
         <Footer>

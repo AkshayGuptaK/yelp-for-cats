@@ -11,7 +11,6 @@ function getStarImage (rating) {
 }
 
 function BusinessCard (props) {
-  console.log('props are', props) // debug
   return (
     <Card style={{ marginBottom: 20 + 'px' }}>
       <Card.Content style={{ width: 30 + '%', display: 'inline-block', padding: 0, verticalAlign: 'middle' }}>

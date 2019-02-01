@@ -8,13 +8,22 @@ function formatBusinessDetails (business) {
     'closed': business.is_closed,
     'price': business.price,
     'rating': business.rating,
-    'reviews': business.review_count,
+    'reviewCount': business.review_count,
     'phone': business.display_phone,
     'address': business.location.display_address.join('\n'),
     'tags': business.categories,
     'images': business.photos,
     'hours': business.hours
   }
+}
+
+function formatReviews (reviews) {
+  return reviews.map(review => Object.assign({}, {
+    rating: review.rating,
+    user: review.user.name,
+    time: review.time_created,
+    text: review.text
+  }))
 }
 
 function formatSearchData (data) {
@@ -54,13 +63,10 @@ class fetchRequests {
     return fetchYelp(`businesses/search?term=cat&location=${loc}`)
       .then(res => { return { 'businesses': formatSearchData(res), 'total': res.total } })
   }
-  static bizDetails (id) {
-    return fetchYelp(`businesses/${id}`)
-      .then(res => formatBusinessDetails(res))
-  }
-  static bizReviews (id) {
-    return fetchYelp(`businesses/${id}/reviews`)
-      .then(res => res.reviews)
+  static bizInfo (id) {
+    let details = fetchYelp(`businesses/${id}`).then(res => formatBusinessDetails(res))
+    let reviews = fetchYelp(`businesses/${id}/reviews`).then(res => formatReviews(res.reviews))
+    return Promise.all([details, reviews]).then(res => Object.assign(res[0], { reviews: res[1] }))
   }
 }
 

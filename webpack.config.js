@@ -2,7 +2,6 @@
 
 const path = require('path')
 const webpack = require('webpack')
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -12,7 +11,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader',
-        options: { presets: ['@babel/preset-env'] } // not sure if needed
+        options: { presets: ['@babel/preset-env'] }
       },
       {
         test: /\.s(c|a)ss$/,
@@ -40,7 +39,6 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'public/dist/'),
-    // publicPath: '/public/dist/',
     filename: 'bundle.js'
   },
   devServer: {
@@ -51,6 +49,5 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
-  //  new ExtractTextPlugin('css/mystyles.css')
   ]
 }

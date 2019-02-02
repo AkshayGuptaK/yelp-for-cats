@@ -1,6 +1,5 @@
 #nav {
   margin-bottom: 20px;
-  border-bottom: 2px solid black;
 }
 
 .searchBtn {
@@ -26,13 +25,13 @@
 
 #nav > .SearchBar {
   display: block;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   margin: auto;
-  width: 520px;
+  width: 600px;
 }
 
 .SearchBar > * {
-  display: table-cell;
+  float: left;
   margin-right: 5px;
 }
 

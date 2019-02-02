@@ -23,7 +23,7 @@ class SearchForm extends React.Component {
           placeholder='Enter a location'
           value={this.state.location}
           update={(text) => this.setState({ location: text })} />
-        <Link to={`/search/term=${this.state.term}&location=${this.state.location}`}>
+        <Link to={`/search/term=cat ${this.state.term}&location=${this.state.location}`}>
           <button className='searchBtn' />
         </Link>
       </div>
